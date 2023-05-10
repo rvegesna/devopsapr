@@ -1,0 +1,15 @@
+---
+- hosts: server2.abc.com
+  become: yes
+  tasks:
+     - name: Install httpd package
+       command: yum install httpd -y
+       args:
+               creates: /var/www/html
+     - name: copy index.html
+       shell: echo "hello" > /var/www/html/index.html
+     - name: start httpd service
+       raw: systemctl start httpd
+     - name: execute the script
+       script: ./xyz.sh
+       ignore_errors: true

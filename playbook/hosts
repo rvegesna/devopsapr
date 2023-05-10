@@ -1,0 +1,11 @@
+[webservers]
+server2.abc.com  ansible_user=test ansible_ssh_password=redhat
+[webservers:vars]
+pkg5=httpd
+[dbservers]
+server3.abc.com
+[servers1:children]
+webservers
+dbservers
+[servers1:vars]
+pkg=httpd1

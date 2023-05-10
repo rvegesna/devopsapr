@@ -1,0 +1,10 @@
+---
+- hosts: servers1
+  become: yes
+  tasks:
+     - name: Install httpd package
+       yum: name=httpd state=installed
+       when: ansible_os_family == "RedHat"
+     - name: Install httpd package
+       apt: name=apache2 state=installed
+       when: ansible_os_family == "Debian"

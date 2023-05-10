@@ -1,0 +1,6 @@
+---
+- hosts: server2.abc.com
+  become: yes
+  tasks:
+     - name: template file testing 
+       template: src=abc.j2  dest=/etc/abc
